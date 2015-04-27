@@ -659,9 +659,9 @@
                     #:transform-expr/bu [transform-expr/bu #f]
                     #:transform-stmt [transform-stmt #f]
                     #:transform-stmt/bu [transform-stmt/bu #f]
-                    #:trace-debug [trace-debug? #f]) 
-    (when trace-debug?
-      (write prog))
+                    #:trace-debug [trace-debug #f]) 
+    (when trace-debug 
+     (trace-debug prog))
     
     (let ([prog* (walk-module prog 
                               #:transform-expr transform-expr
@@ -675,7 +675,7 @@
                     #:transform-stmt transform-stmt
                     #:transform-expr/bu transform-expr/bu
                     #:transform-stmt/bu transform-stmt/bu
-                    #:trace-debug trace-debug?))))
+                    #:trace-debug trace-debug))))
   
   
   (define walk/fix walk-module/fix)
